@@ -462,90 +462,15 @@ img{
 }
 
 
+
 
-/* Skills alignment fix */
-.skills_box {
-    width: 100%;
-}
-
-.skills_subtitle {
-    display: block;
-    width: 100%;
-    clear: both;
-}
-
-.skills_name {
-    display: inline-block;
-    margin: 0.5rem 0.5rem 0.5rem 0;
-}
-
-
-
-/* Override to ensure all skills display inline */
-.skills_name {
-    display: inline-block !important;
-    margin: 0.5rem 0.5rem 0.5rem 0 !important;
-    padding: 0.5rem 1rem !important;
-    background-color: #FAFAFF !important;
-    border: 1px solid #2196F3 !important;
-    border-radius: 0.25rem !important;
-    font-size: 0.875rem !important;
-}
-
-.skills_name:hover {
-    background-color: #2196F3 !important;
-    color: #FAFAFF !important;
-}
-
-.skills_box {
-    width: 100% !important;
-}
-
-.skills_subtitle {
-    display: block !important;
-    width: 100% !important;
-    clear: both !important;
-    margin-bottom: 1rem !important;
-    color: #2196F3 !important;
-}
-
-
-
-.skills_box {
-    text-align: center !important;
-    margin: 0 auto !important;
-}
-
-.skills_subtitle {
-    text-align: center !important;
-}
-
-
-/* Center the entire skills section */
-.skills {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Center skills section on page */
 .skills_container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
-    text-align: center;
+    padding: 0 2rem;
 }
 
 .skills_box {
-    text-align: center;
-    margin: 0 auto;
-}
-
-.skills_subtitle {
-    text-align: center;
-    display: block;
-    width: 100%;
-}
-
-.skills_name {
-    display: inline-block !important;
     text-align: center;
 }
