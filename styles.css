@@ -461,26 +461,3 @@ img{
 }
 
 
-/* Make skills display side by side */
-.skills_box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    width: 100%;
-}
-
-.skills_box > div {
-    margin-bottom: 0;
-}
-
-.skills_subtitle {
-    margin-bottom: 1rem !important;
-    font-size: 1.1rem;
-}
-
-.skills_name {
-    margin: 0.3rem;
-    padding: 0.5rem 1rem;
-    background: rgba(33, 150, 243, 0.1);
-    border: 1px solid #2196F3;
-}
