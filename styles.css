@@ -238,7 +238,7 @@ img{
 }
 .contact_inputs{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     column-gap: 1rem;
 }
 .contact_input{
@@ -341,7 +341,7 @@ img{
     }
 
     .about_container{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         align-items: center;
         text-align: initial;
         padding:0;
@@ -359,7 +359,7 @@ img{
     }
 
     .skills_container{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         align-items: center;
     }
 
@@ -370,7 +370,7 @@ img{
     }
 
     .contact_container{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         justify-items: center;
     }
     .contact_form{
