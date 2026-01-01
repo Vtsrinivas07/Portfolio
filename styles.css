@@ -509,10 +509,7 @@ img{
     color: #2196F3 !important;
 }
 
-/* Center align all skills */
-.skills_container {
-    text-align: center !important;
-}
+
 
 .skills_box {
     text-align: center !important;
@@ -521,4 +518,34 @@ img{
 
 .skills_subtitle {
     text-align: center !important;
+}
+
+
+/* Center the entire skills section */
+.skills {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills_container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.skills_box {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.skills_subtitle {
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.skills_name {
+    display: inline-block !important;
+    text-align: center;
 }
