@@ -479,3 +479,32 @@ img{
     margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
+
+
+/* Override to ensure all skills display inline */
+.skills_name {
+    display: inline-block !important;
+    margin: 0.5rem 0.5rem 0.5rem 0 !important;
+    padding: 0.5rem 1rem !important;
+    background-color: #FAFAFF !important;
+    border: 1px solid #2196F3 !important;
+    border-radius: 0.25rem !important;
+    font-size: 0.875rem !important;
+}
+
+.skills_name:hover {
+    background-color: #2196F3 !important;
+    color: #FAFAFF !important;
+}
+
+.skills_box {
+    width: 100% !important;
+}
+
+.skills_subtitle {
+    display: block !important;
+    width: 100% !important;
+    clear: both !important;
+    margin-bottom: 1rem !important;
+    color: #2196F3 !important;
+}
