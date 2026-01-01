@@ -370,8 +370,9 @@ img{
     }
 
     .contact_container{
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 3rem;
+        align-items: start;
     }
     .contact_form{
         width: 380px;
@@ -477,3 +478,4 @@ img{
     display: inline-block;
     margin: 0.5rem 0.5rem 0.5rem 0;
 }
+
