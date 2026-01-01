@@ -508,3 +508,17 @@ img{
     margin-bottom: 1rem !important;
     color: #2196F3 !important;
 }
+
+/* Center align all skills */
+.skills_container {
+    text-align: center !important;
+}
+
+.skills_box {
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+.skills_subtitle {
+    text-align: center !important;
+}
