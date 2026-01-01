@@ -391,3 +391,72 @@ img{
         height: 640px;
     }
 }
+
+/* Enhanced Project Card Styles */
+.project_content {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.project_content h3 {
+    color: #4CAF50;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.project_content p {
+    color: #FAFAFF;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.project_tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.project_tech span {
+    background: #4CAF50;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.project_img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    padding: 15px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project_img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.project_link-name {
+    color: #4CAF50 !important;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.project_link-name:hover {
+    color: #66BB6A !important;
+    text-decoration: underline;
+}
+
