@@ -54,7 +54,7 @@ img{
     right: 0;
     margin: auto;
     top: 2rem;
-    background-color: #5361FF;
+    background-color: #2196F3;
 }
 
 /*===== LAYOUT =====*/
@@ -73,7 +73,7 @@ img{
     top: 0;
     left: 0;
     z-index: 100;
-    background-color: #5361FF;
+    background-color: #2196F3;
 }
 
 /*===== NAV =====*/
@@ -104,7 +104,7 @@ img{
     color: #2A3B47;
 }
 .nav_link:hover{
-    color: #5361FF;
+    color: #2196F3;
 }
 .logo{
     color: #FAFAFF;
@@ -113,7 +113,7 @@ img{
 /*===== HOME =====*/
 .home{
     position: relative;
-    background-color: #5361FF;
+    background-color: #2196F3;
     overflow: hidden;
 }
 .home_container{
@@ -143,7 +143,7 @@ img{
     padding-top: 1rem;
     width: 120px;
     height: 120px;
-    background-color: #5361FF;
+    background-color: #2196F3;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -152,7 +152,7 @@ img{
 }
 .about_subtitle{
     font-size: 2rem;
-    color: #5361FF;
+    color: #2196F3;
     margin-bottom: .5rem;
 }
 .about_text{
@@ -168,7 +168,7 @@ img{
     row-gap: 2rem;
 }
 .skills_subtitle{
-    color: #5361FF;
+    color: #2196F3;
     margin-bottom: 1.5rem;
 }
 .skills_name{
@@ -181,7 +181,7 @@ img{
     border-radius: .25rem;
 }
 .skills_name:hover{
-    background-color: #5361FF;
+    background-color: #2196F3;
     color: #FAFAFF;
 }
 .skills_img img{
@@ -230,7 +230,7 @@ img{
 }
 .contact_subtitle{
     font-size: 1rem;
-    color: #5361FF;
+    color: #2196F3;
 }
 .contact_text{
     display: inline-block;
@@ -252,7 +252,7 @@ img{
 }
 .contact_button{
     display: block;
-    background-color: #5361FF;
+    background-color: #2196F3;
     color: #FAFAFF;
     padding: .75rem 2.5rem;
     margin-left: auto;
@@ -265,7 +265,7 @@ img{
 .resume_button {
     text-decoration: none;
     color: #fff;
-    background-color: #5361FF;
+    background-color: #2196F3;
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 16px;
@@ -293,7 +293,7 @@ img{
   }
   
   .footer .credit span {
-    color: #5361FF;
+    color: #2196F3;
   }
 
 /* ===== MEDIA QUERIES =====*/
@@ -461,3 +461,19 @@ img{
 }
 
 
+
+/* Skills alignment fix */
+.skills_box {
+    width: 100%;
+}
+
+.skills_subtitle {
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+.skills_name {
+    display: inline-block;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+}
