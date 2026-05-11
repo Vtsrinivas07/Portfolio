@@ -103,8 +103,30 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const modalDesc = document.getElementById('modal-desc')
     const modalTech = document.getElementById('modal-tech')
     const modalGithub = document.getElementById('modal-github')
+    const aboutTabs = Array.from(document.querySelectorAll('.about_tab'))
+    const aboutPanels = Array.from(document.querySelectorAll('.about_panel'))
 
     document.body.classList.add('layout-story')
+
+    if(aboutTabs.length && aboutPanels.length){
+        aboutTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.aboutTab
+
+                aboutTabs.forEach(button => {
+                    const active = button === tab
+                    button.classList.toggle('is-active', active)
+                    button.setAttribute('aria-selected', active ? 'true' : 'false')
+                })
+
+                aboutPanels.forEach(panel => {
+                    const active = panel.dataset.aboutPanel === target
+                    panel.classList.toggle('is-active', active)
+                    panel.hidden = !active
+                })
+            })
+        })
+    }
 
     document.querySelectorAll('.project_link-name').forEach(link=>{
         link.addEventListener('click', (event)=>{

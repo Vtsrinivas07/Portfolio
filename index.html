@@ -35,8 +35,7 @@
             <section class="home" id="home">
                 <div class="home_container bd-grid">
                     <h1 class="home_title"><span>Hi,</span><br>I'm Srinivas</h1>
-                    <h3 style="font-size: xx-large;color:#FAFAFF;text-align:center;margin-top: 1px;">AI/ML Engineer & Full-Stack Developer</h3>
-                    <p style="color:#FAFAFF;text-align:center;margin-top: 15px;font-size: 18px;">Building scalable applications with AI integration and clean architecture</p>
+                    <h3 class="home_subtitle">AI/ML Engineer & Full-Stack Developer</h3>
                 </div>
             </section>
 
@@ -45,36 +44,66 @@
                 <h2 class="section-title">About</h2>
 
                 <div class="about_container bd-grid">
-                    <div>
+                    <div class="about_intro">
                         <h2 class="about_subtitle">I'm Tirumala Srinivas Vuriti</h2>
                         <b><span class="about_profession">AI/ML Specialist | Full-Stack Developer | Computer Science Undergraduate</span></b>
                         <p class="about_text">Computer Science undergraduate specializing in Artificial Intelligence and Machine Learning with strong foundations in Data Structures, Algorithms, OOP, and Database Systems. Experienced in building scalable full-stack applications integrated with predictive models and AI-driven automation. Passionate about designing end-to-end systems focused on performance, clean architecture, and real-world impact.</p>
-                        
-                        <h2 class="about_subtitle" style="margin-top: 20px;">Work Experience</h2>
-                        <p class="about_text">
-                             <b>AI/ML Intern – PrognosAI (Infosys Springboard)</b> | Feb 2026 – Apr 2026<br>
-                             Built and deployed an LSTM-based predictive maintenance system using the NASA CMAPSS dataset to predict Remaining Useful Life (RUL). Incorporated advanced preprocessing, feature engineering, and model comparison (LSTM vs GRU). Developed a Streamlit dashboard for real-time decision support and visualization of predicted RUL trends.<br><br>
-                             <b>Front-End Developer Intern – Edunet Foundation</b> | Jun 2024 – Jul 2024<br>
-                             Developed and deployed a fully responsive personal portfolio website using HTML, CSS, and JavaScript with interactive UI components and smooth animated scrolling. Structured project sections to effectively showcase technical skills across multiple devices and screen sizes.
-                        </p>
+                    </div>
 
-                        <h2 class="about_subtitle" style="margin-top: 20px;">Education</h2>
-                        <ul>
-                            <b>B.Tech in Computer Science</b>
-                            <li><span>2022-2026</span><br>SRM University AP, Amaravati | CGPA: 8.34</li>
-                            <b>Class 12th</b>
-                            <li><span>2020-2022</span><br>Sri Chaitanya Junior College | Score: 83.6%</li>
-                            <b>Class 10th</b>
-                            <li><span>2019-2020</span><br>Sri Chaitanya School | GPA: 10.00</li>
-                        </ul>
+                    <div class="about_tabs" role="tablist" aria-label="About details">
+                        <button class="about_tab is-active" type="button" role="tab" aria-selected="true" data-about-tab="experience">Work Experience</button>
+                        <button class="about_tab" type="button" role="tab" aria-selected="false" data-about-tab="education">Education</button>
+                        <button class="about_tab" type="button" role="tab" aria-selected="false" data-about-tab="certifications">Certifications</button>
+                    </div>
 
-                        <h2 class="about_subtitle" style="margin-top: 20px;">Certifications</h2>
-                        <ul>
-                            <li><b>Oracle Certified Professional: Java SE 17 Developer</b> – Core Java SE language features, OOP, concurrency, and module system</li>
-                            <li><b>Associate Certified Developer – MongoDB</b> – MongoDB data modeling, CRUD operations, aggregation, and indexing</li>
-                            <li><b>The Joy of Computing Using Python – Swayam NPTEL</b> – Python programming fundamentals and computational thinking</li>
-                            <li><b>React (Basic) Certificate – HackerRank</b> – React component fundamentals, hooks, and state management</li>
-                        </ul>
+                    <div class="about_panel is-active" data-about-panel="experience" role="tabpanel">
+                        <article class="about_card">
+                            <h3>AI/ML Intern - PrognosAI (Infosys Springboard)</h3>
+                            <span class="about_meta">Feb 2026 - Apr 2026</span>
+                            <p>Built and deployed an LSTM-based predictive maintenance system using the NASA CMAPSS dataset to predict Remaining Useful Life (RUL). Incorporated advanced preprocessing, feature engineering, and model comparison (LSTM vs GRU). Developed a Streamlit dashboard for real-time decision support and visualization of predicted RUL trends.</p>
+                        </article>
+                        <article class="about_card">
+                            <h3>Front-End Developer Intern - Edunet Foundation</h3>
+                            <span class="about_meta">Jun 2024 - Jul 2024</span>
+                            <p>Developed and deployed a fully responsive personal portfolio website using HTML, CSS, and JavaScript with interactive UI components and smooth animated scrolling. Structured project sections to effectively showcase technical skills across multiple devices and screen sizes.</p>
+                        </article>
+                    </div>
+
+                    <div class="about_panel" data-about-panel="education" role="tabpanel" hidden>
+                        <article class="about_card">
+                            <h3>B.Tech in Computer Science</h3>
+                            <span class="about_meta">2022 - 2026</span>
+                            <p>SRM University AP, Amaravati | CGPA: 8.34</p>
+                        </article>
+                        <article class="about_card">
+                            <h3>Class 12th</h3>
+                            <span class="about_meta">2020 - 2022</span>
+                            <p>Sri Chaitanya Junior College | Score: 83.6%</p>
+                        </article>
+                        <article class="about_card">
+                            <h3>Class 10th</h3>
+                            <span class="about_meta">2019 - 2020</span>
+                            <p>Sri Chaitanya School | GPA: 10.00</p>
+                        </article>
+                    </div>
+
+                    <div class="about_panel" data-about-panel="certifications" role="tabpanel" hidden>
+                        <article class="about_card">
+                            <h3>Oracle Certified Professional: Java SE 17 Developer</h3>
+                            <p>Core Java SE language features, OOP, concurrency, and module system.</p>
+                        </article>
+                        <article class="about_card">
+                            <h3>Associate Certified Developer - MongoDB</h3>
+                            <p>MongoDB data modeling, CRUD operations, aggregation, and indexing.</p>
+                        </article>
+                        <article class="about_card">
+                            <h3>The Joy of Computing Using Python - Swayam NPTEL</h3>
+                            <p>Python programming fundamentals and computational thinking.</p>
+                        </article>
+                        <article class="about_card">
+                            <h3>React (Basic) Certificate - HackerRank</h3>
+                            <p>React component fundamentals, hooks, and state management.</p>
+                        </article>
                     </div>
                 </div>
             </section>
