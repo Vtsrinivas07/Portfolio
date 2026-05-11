@@ -187,11 +187,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         button.addEventListener('click', ()=> applyLayout(button.dataset.layout))
     })
 
-    let savedLayout = 'layout-grid'
-    try{
-        savedLayout = localStorage.getItem(storageKey) || 'layout-grid'
-    }catch(error){}
-    applyLayout(savedLayout)
+    applyLayout('layout-story')
 
     document.querySelectorAll('.project_link-name').forEach(link=>{
         link.addEventListener('click', (event)=>{
