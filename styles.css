@@ -190,31 +190,36 @@ img{
 
 /* ===== PROJECTS =====*/
 .projects{
-    background-color: #f4f6fb; /* lighter page background for contrast */
+    background-color: transparent; /* let page background show through */
 }
 .project_container{
     justify-items: center;
     row-gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 1rem 2rem;
 }
 .project_img{
     position: relative;
     overflow: visible;
-    border-radius: 14px;
-    background: transparent;
+    border-radius: 0; /* remove large outer rounding */
+    background: transparent !important;
     padding: 0;
-    min-height: 320px;
+    min-height: auto;
     display: flex;
     align-items: stretch;
+    margin: 0;
 }
 .project_img .card-inner{
-    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,252,0.98));
-    border-radius: 12px;
+    background: #ffffff; /* clean white card */
+    border-radius: 10px;
     width: 100%;
-    box-shadow: 0 8px 24px rgba(16,24,40,0.08);
-    padding: 26px;
+    box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+    padding: 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform .18s ease, box-shadow .18s ease;
 }
 .project_img img{
     border-radius: 8px;
@@ -269,12 +274,10 @@ img{
 }
 /* Spatial-like project card styles (subtle glass + depth) */
 .spatial-card{
-     background: rgba(255,255,255,0.04);
-     border-radius: 12px;
-     padding: 18px;
-     box-shadow: 0 10px 30px rgba(18,24,31,0.25), inset 0 1px 0 rgba(255,255,255,0.02);
-     backdrop-filter: blur(6px) saturate(120%);
-     border: 1px solid rgba(255,255,255,0.03);
+    background: transparent !important; /* disable outer glass to avoid document-like panels */
+    box-shadow: none;
+    border: none;
+    padding: 0;
 }
 .project_img .project_content h3{ color: #1690FF; }
 .project_tech span{ background: rgba(23,138,255,0.12); color: #0b74d1; padding: 6px 10px; border-radius: 999px; margin-right: 8px; display: inline-block; font-size: 0.85rem; }
@@ -447,6 +450,12 @@ img{
 
 .project_img:hover {
     transform: translateY(-6px);
+}
+
+/* subtle elevation on hover */
+.project_img .card-inner:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(16,24,40,0.12);
 }
 
 
