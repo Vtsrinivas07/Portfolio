@@ -22,8 +22,26 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 
 /*===== SCROLL SECTIONS ACTIVE LINK =====*/
 const sections = document.querySelectorAll('section[id]')
+const navLinksBySection = new Map()
 
-window.addEventListener('scroll', scrollActive)
+sections.forEach(section => {
+    const sectionId = section.getAttribute('id')
+    const navLink = document.querySelector('.nav_menu a[href*=' + sectionId + ']')
+    if(navLink){
+        navLinksBySection.set(sectionId, navLink)
+    }
+})
+
+let scrollTicking = false
+
+window.addEventListener('scroll', () => {
+    if(scrollTicking) return
+    scrollTicking = true
+    window.requestAnimationFrame(() => {
+        scrollActive()
+        scrollTicking = false
+    })
+}, { passive: true })
 
 function scrollActive(){
     const scrollY = window.pageYOffset
@@ -32,11 +50,13 @@ function scrollActive(){
         const sectionHeight = current.offsetHeight
         const sectionTop = current.offsetTop - 50;
         const sectionId = current.getAttribute('id')
+        const navLink = navLinksBySection.get(sectionId)
+        if(!navLink) return
 
         if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav_menu a[href*=' + sectionId + ']').classList.add('active')
+            navLink.classList.add('active')
         }else{
-            document.querySelector('.nav_menu a[href*=' + sectionId + ']').classList.remove('active')
+            navLink.classList.remove('active')
         }
     })
 }
@@ -46,7 +66,7 @@ const sr = ScrollReveal({
     origin: 'top',
     distance: '80px',
     duration: 2000,
-    reset: true
+    reset: false
 })
 
 /*SCROLL HOME*/
