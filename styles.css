@@ -196,10 +196,9 @@ img{
     display: grid;
     justify-items: stretch;
     row-gap: 2.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 28px;
     padding: 1.5rem 2rem;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 .project_img{
@@ -386,13 +385,9 @@ img{
         align-items: center;
     }
 
-    .project_container{
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 28px;
-    }
-
-    /* Force explicit columns at different breakpoints so projects layout predictably */
-    @media screen and (min-width: 900px) and (max-width: 1199px){
+    /* Explicit responsive columns: 2 columns on tablet, 3 on small desktop, 4 on large screens */
+    .project_container{ grid-template-columns: repeat(2, 1fr); }
+    @media screen and (min-width: 900px){
         .project_container{ grid-template-columns: repeat(3, 1fr); }
     }
     @media screen and (min-width: 1200px){
