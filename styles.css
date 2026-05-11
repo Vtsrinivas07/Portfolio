@@ -620,16 +620,16 @@ body.layout-grid .home{
 }
 
 body.layout-story{
-    background: #f7f1ea;
-    color: #423f3c;
+    background: #f4f8fc;
+    color: #334155;
 }
 
 body.layout-story .header{
-    background: rgba(36, 32, 29, .92);
+    background: rgba(33, 150, 243, .98);
 }
 
 body.layout-story .home{
-    background: linear-gradient(145deg, #2b211c 0%, #49362b 100%);
+    background: linear-gradient(135deg, #2196F3 0%, #0b66d0 100%);
 }
 
 body.layout-story .section{
@@ -652,10 +652,41 @@ body.layout-story .about_container,
 body.layout-story .skills_container,
 body.layout-story .project_container,
 body.layout-story .contact_container{
-    background: rgba(255,255,255,.88);
+    background: rgba(255,255,255,.98);
     border-radius: 28px;
-    box-shadow: 0 22px 60px rgba(67,58,45,.08);
+    box-shadow: 0 22px 60px rgba(16,24,40,.08);
+    border: 1px solid rgba(33,150,243,.08);
     padding: 2rem;
+}
+
+body.layout-story .layout-selector{
+    background: rgba(255,255,255,.96);
+    border-color: rgba(33,150,243,.10);
+}
+
+body.layout-story .layout-selector-label{
+    color: #0f172a;
+}
+
+body.layout-story .layout-btn{
+    background: #f8fbff;
+    color: #1f2937;
+}
+
+body.layout-story .layout-btn:hover,
+body.layout-story .layout-btn.is-active{
+    background: #2196F3;
+    color: #FAFAFF;
+}
+
+body.layout-story .action-btn{
+    background: #2196F3;
+    color: #FAFAFF;
+}
+
+body.layout-story .action-btn-secondary{
+    background: transparent;
+    color: #2196F3;
 }
 
 body.layout-story .project_container{
@@ -665,6 +696,31 @@ body.layout-story .project_container{
 
 body.layout-story .project_img .card-inner{
     min-height: 100%;
+    background: #ffffff;
+    border: 1px solid rgba(33,150,243,.08);
+}
+
+body.layout-story .skills_name{
+    background: #eef7ff;
+    color: #0b66d0;
+    border: 1px solid rgba(11,102,208,.08);
+}
+
+body.layout-story .section-title,
+body.layout-story .about_subtitle,
+body.layout-story .skills_subtitle,
+body.layout-story .contact_subtitle,
+body.layout-story .project_content h3{
+    color: #0b66d0;
+}
+
+body.layout-story .nav_link,
+body.layout-story .logo{
+    color: #FAFAFF;
+}
+
+body.layout-story .footer{
+    background: #0b66d0;
 }
 
 body.layout-minimal{
