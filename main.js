@@ -75,6 +75,63 @@ sr.reveal('.contact_text', {interval: 200})
 sr.reveal('.contact_input', {delay: 400})
 sr.reveal('.contact_button', {delay: 600})
 
+/* ===== Project modal and Show All toggle ===== */
+document.addEventListener('DOMContentLoaded', ()=>{
+    const projectContainer = document.querySelector('.project_container')
+    const toggleBtn = document.getElementById('toggle-projects-btn')
+    const modal = document.getElementById('project-modal')
+    const modalOverlay = modal && modal.querySelector('.modal-overlay')
+    const modalPanel = modal && modal.querySelector('.modal-panel')
+    const modalTitle = document.getElementById('modal-title')
+    const modalDesc = document.getElementById('modal-desc')
+    const modalTech = document.getElementById('modal-tech')
+    const modalGithub = document.getElementById('modal-github')
+
+    if(toggleBtn && projectContainer){
+        toggleBtn.addEventListener('click', ()=>{
+            const showing = projectContainer.classList.toggle('show-all')
+            toggleBtn.textContent = showing ? 'Show Featured (4x4)' : 'Show All Projects'
+        })
+    }
+
+    // intercept project link clicks to show modal instead of navigating
+    document.querySelectorAll('.project_link-name').forEach(link=>{
+        link.addEventListener('click', (e)=>{
+            // only if href is a github url
+            const href = link.getAttribute('href')
+            if(!href || href === '#') return
+            e.preventDefault()
+            const card = link.closest('.project_img')
+            if(!card) return
+            const titleEl = card.querySelector('h3')
+            const descEl = card.querySelector('p')
+            const techEls = Array.from(card.querySelectorAll('.project_tech span'))
+            modalTitle.textContent = titleEl ? titleEl.textContent.trim() : ''
+            modalDesc.textContent = descEl ? descEl.textContent.trim() : ''
+            modalTech.innerHTML = ''
+            techEls.forEach(t=>{
+                const s = document.createElement('span')
+                s.className = 'project_tag'
+                s.textContent = t.textContent.trim()
+                modalTech.appendChild(s)
+            })
+            modalGithub.href = href
+            modal.classList.remove('hidden')
+            document.body.style.overflow = 'hidden'
+        })
+    })
+
+    function closeModal(){
+        if(modal) modal.classList.add('hidden')
+        document.body.style.overflow = ''
+    }
+
+    if(modalOverlay) modalOverlay.addEventListener('click', closeModal)
+    const modalClose = document.querySelector('.modal-close')
+    if(modalClose) modalClose.addEventListener('click', closeModal)
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal() })
+})
+
 
 
 

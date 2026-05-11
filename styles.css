@@ -394,8 +394,8 @@ img{
         .project_container{ grid-template-columns: repeat(4, 1fr); }
         /* Force consistent card height and limit visible featured projects to 16 (4x4) */
         .project_img .card-inner{ min-height: 260px; }
-        /* If there are more than 16 project items, hide the extras from the Featured grid */
-        .project_container > .project_img:nth-child(n+17){ display: none; }
+        /* If there are more than 16 project items, hide the extras from the Featured grid unless `.show-all` is set */
+        .project_container:not(.show-all) > .project_img:nth-child(n+17){ display: none; }
     }
 
     .contact_container{
@@ -474,6 +474,14 @@ img{
     transform: translateY(-3px);
     box-shadow: 0 6px 18px rgba(11,102,208,0.08);
 }
+
+/* Modal styles */
+.modal{ position: fixed; inset: 0; display: grid; place-items: center; z-index: 2000; }
+.modal.hidden{ display: none; }
+.modal-overlay{ position: absolute; inset: 0; background: rgba(10,20,30,0.45); }
+.modal-panel{ position: relative; background: white; padding: 22px; border-radius: 10px; width: min(720px, 92%); max-height: 80vh; overflow:auto; box-shadow: 0 30px 80px rgba(10,20,30,0.2); }
+.modal-close{ position: absolute; right: 12px; top: 8px; border: none; background: transparent; font-size: 22px; cursor: pointer; }
+.project_tag{ display:inline-block; background:#eef7ff; color:#0b66d0; padding:6px 10px; border-radius:999px; margin-right:8px; margin-bottom:6px; font-weight:600; }
 
 
 

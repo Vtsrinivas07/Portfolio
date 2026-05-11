@@ -296,8 +296,9 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 30px;">
-                    <a href="https://github.com/Vtsrinivas07?tab=repositories" target="_blank" style="color: #2196F3; font-size: 18px; text-decoration: none; border: 2px solid #2196F3; padding: 10px 20px; border-radius: 5px; display: inline-block;">
-                        View All Projects on GitHub 
+                    <button id="toggle-projects-btn" style="color: #2196F3; font-size: 16px; text-decoration: none; border: 2px solid #2196F3; padding: 8px 16px; border-radius: 5px; background: white; cursor: pointer;">Show All Projects</button>
+                    <a href="https://github.com/Vtsrinivas07?tab=repositories" target="_blank" style="color: #2196F3; font-size: 16px; text-decoration: none; border: 2px solid #2196F3; padding: 8px 16px; border-radius: 5px; display: inline-block; margin-left: 12px;">
+                        View All Projects on GitHub
                     </a>
                 </div>
             </section>
@@ -348,6 +349,17 @@
 
         <!--===== MAIN JS =====-->
         <script src="main.js"></script>
+        <!-- Project modal -->
+        <div id="project-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-panel">
+                <button class="modal-close" aria-label="Close">×</button>
+                <h3 id="modal-title"></h3>
+                <p id="modal-desc"></p>
+                <div id="modal-tech" class="project_tech" style="margin-top:12px;"></div>
+                <a id="modal-github" href="#" target="_blank" class="resume_button" style="margin-top:12px; display:inline-block;">Open on GitHub</a>
+            </div>
+        </div>
     </body>
 </html>
 
