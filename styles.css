@@ -59,7 +59,7 @@ img{
 
 /*===== LAYOUT =====*/
 .bd-grid{
-    max-width: 1024px;
+    max-width: 1400px;
     display: grid;
     grid-template-columns: 100%;
     grid-column-gap: 2rem;
@@ -389,6 +389,14 @@ img{
     .project_container{
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 28px;
+    }
+
+    /* Force explicit columns at different breakpoints so projects layout predictably */
+    @media screen and (min-width: 900px) and (max-width: 1199px){
+        .project_container{ grid-template-columns: repeat(3, 1fr); }
+    }
+    @media screen and (min-width: 1200px){
+        .project_container{ grid-template-columns: repeat(4, 1fr); }
     }
 
     .contact_container{
