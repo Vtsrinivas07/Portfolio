@@ -392,6 +392,10 @@ img{
     }
     @media screen and (min-width: 1200px){
         .project_container{ grid-template-columns: repeat(4, 1fr); }
+        /* Force consistent card height and limit visible featured projects to 16 (4x4) */
+        .project_img .card-inner{ min-height: 260px; }
+        /* If there are more than 16 project items, hide the extras from the Featured grid */
+        .project_container > .project_img:nth-child(n+17){ display: none; }
     }
 
     .contact_container{
