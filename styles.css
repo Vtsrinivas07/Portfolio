@@ -483,6 +483,40 @@ img{
 .modal-close{ position: absolute; right: 12px; top: 8px; border: none; background: transparent; font-size: 22px; cursor: pointer; }
 .project_tag{ display:inline-block; background:#eef7ff; color:#0b66d0; padding:6px 10px; border-radius:999px; margin-right:8px; margin-bottom:6px; font-weight:600; }
 
+/* ===== Layout mode variations ===== */
+/* Scrollable single-page: stack projects vertically with larger spacing */
+.layout-scroll .project_container{
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.layout-scroll .project_img{ margin-bottom: 28px; }
+.layout-scroll .card-inner{ padding: 30px; min-height: auto; }
+
+/* Gallery: tighter grid, smaller cards (default behavior already close) */
+.layout-grid .project_container{ gap: 20px; }
+
+/* Story / Narrative: wide cards with process placeholder */
+.layout-story .project_container{ grid-template-columns: repeat(2, 1fr); max-width: 1100px; }
+.layout-story .card-inner{ display:flex; flex-direction:row; gap:18px; align-items:flex-start; }
+.layout-story .project_content{ flex: 1; }
+.layout-story .project_extra{ flex-basis:260px; background:#fafafa; padding:12px; border-radius:8px; color:#333; font-size:0.9rem; }
+
+/* Minimal / Typography-first: dark, reduced chrome */
+.layout-minimal body, .layout-minimal .projects{ }
+.layout-minimal .home, .layout-minimal .header{ }
+.layout-minimal body{ background: #071029; color: #e6eef8; }
+.layout-minimal .header{ background: #0b66d0; }
+.layout-minimal .card-inner{ background: transparent; box-shadow: none; padding: 30px 12px; border-radius: 4px; }
+.layout-minimal .project_content h3{ color: #e6eef8; font-size:1.5rem; }
+.layout-minimal .project_content p, .layout-minimal .project_tech{ color: #c9dff6; }
+.layout-minimal .project_tech span{ display:none; }
+
+/* Interactive / Gamified: custom cursor and tilt enabled via JS */
+.layout-interactive .project_img .card-inner{ transition: transform .18s ease, box-shadow .18s ease, transform-origin .1s; }
+.custom-cursor{ position:fixed; left:0; top:0; width:18px; height:18px; border-radius:50%; pointer-events:none; transform:translate(-50%,-50%); z-index:3000; background: rgba(11,102,208,0.9); mix-blend-mode: difference; transition: width .12s ease, height .12s ease, background .12s ease; }
+.custom-cursor.big{ width:36px; height:36px; background: rgba(11,102,208,0.6); }
+
 
 
 

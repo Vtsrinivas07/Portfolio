@@ -94,6 +94,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     }
 
+    // Layout mode switching
+    const layoutButtons = document.querySelectorAll('.layout-btn')
+    const applyLayout = (mode)=>{
+        // remove existing layout-* classes from body
+        document.body.classList.remove('layout-scroll','layout-grid','layout-story','layout-minimal','layout-interactive')
+        document.body.classList.add(mode)
+        // persist
+        try{ localStorage.setItem('portfolioLayout', mode) }catch(e){}
+        // interactive mode requires cursor and tilt
+        if(mode === 'layout-interactive') enableInteractive()
+        else disableInteractive()
+    }
+
+    layoutButtons.forEach(btn=> btn.addEventListener('click', ()=> applyLayout(btn.dataset.layout)))
+
+    // restore layout from storage
+    const saved = localStorage.getItem('portfolioLayout')
+    if(saved) applyLayout(saved)
+
     // intercept project link clicks to show modal instead of navigating
     document.querySelectorAll('.project_link-name').forEach(link=>{
         link.addEventListener('click', (e)=>{
@@ -125,6 +144,50 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(modal) modal.classList.add('hidden')
         document.body.style.overflow = ''
     }
+
+    /* Interactive cursor + tilt */
+    let cursorEl = null
+    let interactiveEnabled = false
+    function enableInteractive(){
+        if(interactiveEnabled) return
+        interactiveEnabled = true
+        // add cursor
+        cursorEl = document.createElement('div')
+        cursorEl.className = 'custom-cursor'
+        document.body.appendChild(cursorEl)
+
+        document.addEventListener('mousemove', onMove)
+        // tilt effect on card inner
+        document.querySelectorAll('.card-inner').forEach(card=>{
+            card.addEventListener('mousemove', onCardMove)
+            card.addEventListener('mouseleave', onCardLeave)
+            card.addEventListener('mouseenter', ()=> cursorEl.classList.add('big'))
+        })
+    }
+    function disableInteractive(){
+        if(!interactiveEnabled) return
+        interactiveEnabled = false
+        document.removeEventListener('mousemove', onMove)
+        document.querySelectorAll('.card-inner').forEach(card=>{
+            card.removeEventListener('mousemove', onCardMove)
+            card.removeEventListener('mouseleave', onCardLeave)
+            card.removeEventListener('mouseenter', ()=> cursorEl.classList.remove('big'))
+            card.style.transform = ''
+        })
+        if(cursorEl){ cursorEl.remove(); cursorEl = null }
+    }
+
+    function onMove(e){ if(cursorEl) { cursorEl.style.left = e.clientX + 'px'; cursorEl.style.top = e.clientY + 'px'; } }
+    function onCardMove(e){
+        const el = e.currentTarget
+        const r = el.getBoundingClientRect()
+        const px = (e.clientX - r.left)/r.width
+        const py = (e.clientY - r.top)/r.height
+        const rx = (py - 0.5) * 6
+        const ry = (px - 0.5) * -6
+        el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`
+    }
+    function onCardLeave(e){ e.currentTarget.style.transform = '' }
 
     if(modalOverlay) modalOverlay.addEventListener('click', closeModal)
     const modalClose = document.querySelector('.modal-close')
