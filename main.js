@@ -101,10 +101,36 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const modalOverlay = modal && modal.querySelector('.modal-overlay')
     const modalTitle = document.getElementById('modal-title')
     const modalDesc = document.getElementById('modal-desc')
+    const modalChallenge = document.getElementById('modal-challenge')
+    const modalApproach = document.getElementById('modal-approach')
+    const modalImpact = document.getElementById('modal-impact')
     const modalTech = document.getElementById('modal-tech')
     const modalGithub = document.getElementById('modal-github')
 
     document.body.classList.add('layout-story')
+
+    const projectNarratives = {
+        'MediAI - AI Healthcare Platform': {
+            challenge: 'Unify conversational AI, image diagnostics, and secure patient workflow inside one reliable healthcare product.',
+            approach: 'Designed a modular FastAPI plus React architecture with RAG retrieval, model-serving endpoints, and role-aware auth boundaries.',
+            impact: 'Reduced decision latency for medical lookups and created a scalable base for multimodal clinical support.'
+        },
+        'Social Media Platform with AI Content Moderation': {
+            challenge: 'Balance community freedom with proactive moderation at high posting volume.',
+            approach: 'Combined MERN feed architecture with OpenAI moderation checks and admin audit logs for transparent governance.',
+            impact: 'Improved trust and moderation speed while preserving a smooth publishing experience.'
+        },
+        'Heart Attack Risk Prediction': {
+            challenge: 'Convert raw clinical attributes into dependable risk predictions with interpretable outputs.',
+            approach: 'Trained and compared KNN and ANN pipelines after disciplined preprocessing and feature selection.',
+            impact: 'Reached 87.12% test accuracy and ROC-AUC 0.85 for practical screening workflows.'
+        },
+        'Resume Parser & Job Recommendation': {
+            challenge: 'Extract meaningful candidate signals from unstructured resume text and map them to jobs.',
+            approach: 'Built NLP extraction and similarity ranking to align skills, profile context, and opportunity matching.',
+            impact: 'Improved recommendation relevance and reduced manual shortlisting effort.'
+        }
+    }
 
     document.querySelectorAll('.project_link-name').forEach(link=>{
         link.addEventListener('click', (event)=>{
@@ -120,9 +146,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
             const titleEl = card.querySelector('h3')
             const descEl = card.querySelector('p')
             const techEls = Array.from(card.querySelectorAll('.project_tech span'))
+            const titleText = titleEl ? titleEl.textContent.trim() : ''
+            const narrative = projectNarratives[titleText] || {
+                challenge: 'Translate an idea into a deployable product with maintainable architecture and clean UI behavior.',
+                approach: 'Applied iterative build-measure-refine cycles across backend APIs, frontend components, and deployment workflows.',
+                impact: 'Delivered a stable end-to-end implementation that showcases practical engineering depth.'
+            }
 
-            modalTitle.textContent = titleEl ? titleEl.textContent.trim() : ''
+            modalTitle.textContent = titleText
             modalDesc.textContent = descEl ? descEl.textContent.trim() : ''
+            modalChallenge.textContent = narrative.challenge
+            modalApproach.textContent = narrative.approach
+            modalImpact.textContent = narrative.impact
             modalTech.innerHTML = ''
 
             techEls.forEach(tag=>{
