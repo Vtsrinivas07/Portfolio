@@ -31,7 +31,7 @@ function scrollActive(){
     sections.forEach(current =>{
         const sectionHeight = current.offsetHeight
         const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+        const sectionId = current.getAttribute('id')
 
         if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
             document.querySelector('.nav_menu a[href*=' + sectionId + ']').classList.add('active')
@@ -75,17 +75,106 @@ sr.reveal('.contact_text', {interval: 200})
 sr.reveal('.contact_input', {delay: 400})
 sr.reveal('.contact_button', {delay: 600})
 
-/* ===== Project modal and Show All toggle ===== */
+/* ===== Project modal, Show All toggle, and site-wide layout modes ===== */
 document.addEventListener('DOMContentLoaded', ()=>{
     const projectContainer = document.querySelector('.project_container')
     const toggleBtn = document.getElementById('toggle-projects-btn')
+    const layoutButtons = Array.from(document.querySelectorAll('.layout-btn'))
+    const layoutModes = ['layout-scroll', 'layout-grid', 'layout-story', 'layout-minimal', 'layout-interactive']
     const modal = document.getElementById('project-modal')
     const modalOverlay = modal && modal.querySelector('.modal-overlay')
-    const modalPanel = modal && modal.querySelector('.modal-panel')
     const modalTitle = document.getElementById('modal-title')
     const modalDesc = document.getElementById('modal-desc')
     const modalTech = document.getElementById('modal-tech')
     const modalGithub = document.getElementById('modal-github')
+
+    const storageKey = 'portfolioLayout'
+    let activeLayout = 'layout-grid'
+    let cursorEl = null
+    let cursorMoveHandler = null
+    let tiltBindings = []
+
+    function setButtonState(layout){
+        layoutButtons.forEach(button=>{
+            button.classList.toggle('is-active', button.dataset.layout === layout)
+            button.setAttribute('aria-pressed', button.dataset.layout === layout ? 'true' : 'false')
+        })
+    }
+
+    function disableInteractive(){
+        if(cursorMoveHandler){
+            document.removeEventListener('mousemove', cursorMoveHandler)
+            cursorMoveHandler = null
+        }
+
+        tiltBindings.forEach(binding=>{
+            binding.card.removeEventListener('mousemove', binding.move)
+            binding.card.removeEventListener('mouseleave', binding.leave)
+            binding.card.style.transform = ''
+        })
+        tiltBindings = []
+
+        if(cursorEl){
+            cursorEl.remove()
+            cursorEl = null
+        }
+    }
+
+    function enableInteractive(){
+        if(cursorEl){
+            return
+        }
+
+        cursorEl = document.createElement('div')
+        cursorEl.className = 'custom-cursor'
+        document.body.appendChild(cursorEl)
+
+        cursorMoveHandler = event => {
+            cursorEl.style.left = event.clientX + 'px'
+            cursorEl.style.top = event.clientY + 'px'
+        }
+        document.addEventListener('mousemove', cursorMoveHandler)
+
+        document.querySelectorAll('.card-inner').forEach(card=>{
+            const move = event => {
+                const bounds = card.getBoundingClientRect()
+                const x = (event.clientX - bounds.left) / bounds.width
+                const y = (event.clientY - bounds.top) / bounds.height
+                const rotateX = (y - 0.5) * 8
+                const rotateY = (x - 0.5) * -8
+                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`
+            }
+
+            const leave = () => {
+                card.style.transform = ''
+            }
+
+            card.addEventListener('mousemove', move)
+            card.addEventListener('mouseleave', leave)
+            tiltBindings.push({ card, move, leave })
+        })
+    }
+
+    function applyLayout(layout){
+        if(!layoutModes.includes(layout)){
+            layout = 'layout-grid'
+        }
+
+        layoutModes.forEach(mode => document.body.classList.remove(mode))
+        document.body.classList.add(layout)
+        activeLayout = layout
+        setButtonState(layout)
+
+        try{
+            localStorage.setItem(storageKey, layout)
+        }catch(error){}
+
+        if(layout === 'layout-interactive'){
+            enableInteractive()
+        }else{
+            disableInteractive()
+        }
+    }
 
     if(toggleBtn && projectContainer){
         toggleBtn.addEventListener('click', ()=>{
@@ -94,29 +183,42 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     }
 
-    // layout selector removed — no-op
+    layoutButtons.forEach(button=>{
+        button.addEventListener('click', ()=> applyLayout(button.dataset.layout))
+    })
 
-    // intercept project link clicks to show modal instead of navigating
+    let savedLayout = 'layout-grid'
+    try{
+        savedLayout = localStorage.getItem(storageKey) || 'layout-grid'
+    }catch(error){}
+    applyLayout(savedLayout)
+
     document.querySelectorAll('.project_link-name').forEach(link=>{
-        link.addEventListener('click', (e)=>{
-            // only if href is a github url
+        link.addEventListener('click', (event)=>{
             const href = link.getAttribute('href')
-            if(!href || href === '#') return
-            e.preventDefault()
+            if(!href || href === '#'){
+                return
+            }
+
+            event.preventDefault()
             const card = link.closest('.project_img')
-            if(!card) return
+            if(!card || !modal) return
+
             const titleEl = card.querySelector('h3')
             const descEl = card.querySelector('p')
             const techEls = Array.from(card.querySelectorAll('.project_tech span'))
+
             modalTitle.textContent = titleEl ? titleEl.textContent.trim() : ''
             modalDesc.textContent = descEl ? descEl.textContent.trim() : ''
             modalTech.innerHTML = ''
-            techEls.forEach(t=>{
-                const s = document.createElement('span')
-                s.className = 'project_tag'
-                s.textContent = t.textContent.trim()
-                modalTech.appendChild(s)
+
+            techEls.forEach(tag=>{
+                const pill = document.createElement('span')
+                pill.className = 'project_tag'
+                pill.textContent = tag.textContent.trim()
+                modalTech.appendChild(pill)
             })
+
             modalGithub.href = href
             modal.classList.remove('hidden')
             document.body.style.overflow = 'hidden'
@@ -124,16 +226,26 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     function closeModal(){
-        if(modal) modal.classList.add('hidden')
+        if(modal){
+            modal.classList.add('hidden')
+        }
         document.body.style.overflow = ''
     }
 
-    // interactive cursor/tilt code removed
+    if(modalOverlay){
+        modalOverlay.addEventListener('click', closeModal)
+    }
 
-    if(modalOverlay) modalOverlay.addEventListener('click', closeModal)
     const modalClose = document.querySelector('.modal-close')
-    if(modalClose) modalClose.addEventListener('click', closeModal)
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal() })
+    if(modalClose){
+        modalClose.addEventListener('click', closeModal)
+    }
+
+    document.addEventListener('keydown', (event)=>{
+        if(event.key === 'Escape'){
+            closeModal()
+        }
+    })
 })
 
 
