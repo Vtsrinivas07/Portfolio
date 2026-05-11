@@ -599,3 +599,130 @@ body.layout-story .logo{
 body.layout-story .footer{
     background: #0b66d0;
 }
+
+/* Resume-document presentation for the full portfolio */
+body.layout-story{
+    background: #e8eef5;
+    color: #1f2937;
+}
+
+body.layout-story .header{
+    background: #2196F3;
+}
+
+body.layout-story .main{
+    max-width: 1020px;
+    margin: 5rem auto 2rem;
+    background: #ffffff;
+    border: 1px solid #d8e2ef;
+    border-radius: 8px;
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08);
+    padding: 0 2rem 2rem;
+}
+
+body.layout-story .home{
+    background: transparent;
+    border-bottom: 2px solid #e6edf7;
+}
+
+body.layout-story .home_container{
+    height: auto;
+    min-height: auto;
+    row-gap: .35rem;
+    padding: 1.5rem 0 1rem;
+}
+
+body.layout-story .home_title{
+    text-align: left;
+    align-self: start;
+    font-size: 2.6rem;
+    line-height: 1.05;
+    color: #0f172a;
+}
+
+body.layout-story .home_title span{
+    text-shadow: none;
+}
+
+body.layout-story .home h3{
+    color: #0b66d0 !important;
+    text-align: left !important;
+    margin-top: .25rem !important;
+    font-size: 1.2rem !important;
+}
+
+body.layout-story .home p{
+    color: #4b5563 !important;
+    text-align: left !important;
+    margin-top: .25rem !important;
+    font-size: 1rem !important;
+}
+
+body.layout-story section{
+    padding: 1.75rem 0;
+    border-bottom: 1px solid #edf2f9;
+}
+
+body.layout-story section:last-of-type{
+    border-bottom: none;
+}
+
+body.layout-story .section-title{
+    margin: 0 0 1rem;
+    font-size: 2.1rem;
+}
+
+body.layout-story .section-title::after{
+    width: 72px;
+    top: 2.4rem;
+}
+
+body.layout-story .about_container,
+body.layout-story .skills_container,
+body.layout-story .project_container,
+body.layout-story .contact_container{
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+body.layout-story .project_container{
+    max-width: 100%;
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.layout-story .project_img .card-inner{
+    border: 1px solid #dbe7f4;
+    border-radius: 8px;
+    box-shadow: none;
+    min-height: 100%;
+}
+
+body.layout-story .project_img:hover,
+body.layout-story .project_img .card-inner:hover,
+body.layout-story .project_tech span:hover{
+    transform: none;
+    box-shadow: none;
+}
+
+body.layout-story .project_more-link{
+    border-radius: 6px;
+}
+
+@media screen and (max-width: 900px){
+    body.layout-story .main{
+        margin: 4.25rem .8rem 1rem;
+        padding: 0 1rem 1.2rem;
+    }
+
+    body.layout-story .home_title{
+        font-size: 2rem;
+    }
+
+    body.layout-story .project_container{
+        grid-template-columns: 1fr;
+    }
+}
