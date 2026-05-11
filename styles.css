@@ -1,5 +1,5 @@
 /*===== GOOGLE FONTS =====*/
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
 
 /*===== BASE =====*/
 *,::before,::after{
@@ -10,7 +10,7 @@ html{
 }
 body{
     margin: 3rem 0 0 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;
     font-weight: 500;
     color: #697477;
@@ -526,76 +526,277 @@ img{
     text-align: center;
 }
 
+:root{
+    --ui-bg: #edf3fb;
+    --ui-card: #ffffff;
+    --ui-border: rgba(24, 105, 196, 0.16);
+    --ui-text: #1f2b3d;
+    --ui-text-muted: #4f6078;
+    --ui-primary: #1f89eb;
+    --ui-primary-deep: #0f68bf;
+    --ui-shadow: 0 24px 56px rgba(15, 41, 77, 0.12);
+}
+
 body.layout-story{
-    background: #f4f8fc;
-    color: #334155;
+    background: radial-gradient(circle at 12% 15%, rgba(31, 137, 235, 0.18) 0%, rgba(31, 137, 235, 0.03) 30%, rgba(31, 137, 235, 0) 58%),
+                radial-gradient(circle at 86% 12%, rgba(15, 104, 191, 0.2) 0%, rgba(15, 104, 191, 0.03) 34%, rgba(15, 104, 191, 0) 58%),
+                var(--ui-bg);
+    color: var(--ui-text);
 }
 
 body.layout-story .header{
-    background: rgba(33, 150, 243, .98);
+    background: rgba(22, 121, 214, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+body.layout-story .logo,
+body.layout-story .nav_link{
+    color: #f9fcff;
+}
+
+body.layout-story .nav_link{
+    font-weight: 700;
+    letter-spacing: 0.01em;
 }
 
 body.layout-story .home{
-    background: linear-gradient(135deg, #2196F3 0%, #0b66d0 100%);
+    background: linear-gradient(140deg, #2294ef 0%, #0f68bf 74%);
+}
+
+body.layout-story .home_container{
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+    row-gap: 1rem;
+}
+
+body.layout-story .home_title{
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(3rem, 8vw, 5.6rem);
+    line-height: 0.9;
+}
+
+body.layout-story .home_subtitle{
+    color: #f5f9ff;
+    font-size: clamp(1.15rem, 2.3vw, 1.7rem);
+    font-weight: 700;
 }
 
 body.layout-story .section{
-    padding-top: 4.5rem;
+    padding-top: 4.3rem;
 }
 
 body.layout-story .section-title{
+    font-family: 'Sora', sans-serif;
     text-align: left;
-    max-width: 1200px;
+    max-width: 1240px;
     margin-left: auto;
     margin-right: auto;
+    font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+    color: #103b6e;
 }
 
 body.layout-story .section-title::after{
     left: 0;
     right: auto;
+    width: 74px;
+    height: .24rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #2ba0f7 0%, #0f68bf 100%);
 }
 
 body.layout-story .about_container,
 body.layout-story .skills_container,
 body.layout-story .project_container,
 body.layout-story .contact_container{
-    background: rgba(255,255,255,.98);
-    border-radius: 28px;
-    box-shadow: 0 22px 60px rgba(16,24,40,.08);
-    border: 1px solid rgba(33,150,243,.08);
+    background: rgba(255,255,255,0.96);
+    border: 1px solid var(--ui-border);
+    border-radius: 24px;
+    box-shadow: var(--ui-shadow);
     padding: 2rem;
 }
 
+body.layout-story .about_subtitle,
+body.layout-story .skills_subtitle,
+body.layout-story .contact_subtitle,
+body.layout-story .project_content h3{
+    color: var(--ui-primary-deep);
+}
+
+body.layout-story .about_text,
+body.layout-story .project_content p,
+body.layout-story .contact_text{
+    color: var(--ui-text-muted);
+}
+
+body.layout-story .about_container{
+    gap: 1.2rem;
+}
+
+body.layout-story .about_intro{
+    padding-bottom: .3rem;
+}
+
+body.layout-story .about_tabs{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: .25rem;
+}
+
+body.layout-story .about_tab{
+    border: 1px solid rgba(31, 137, 235, 0.22);
+    background: #f2f8ff;
+    color: #0f4f8f;
+    border-radius: 999px;
+    padding: .58rem 1rem;
+    font-family: inherit;
+    font-size: .9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+body.layout-story .about_tab:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(22, 95, 168, .12);
+}
+
+body.layout-story .about_tab.is-active{
+    background: linear-gradient(120deg, var(--ui-primary) 0%, var(--ui-primary-deep) 100%);
+    color: #ffffff;
+    border-color: transparent;
+}
+
+body.layout-story .about_panel{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+body.layout-story .about_panel[hidden]{
+    display: none !important;
+}
+
+body.layout-story .about_panel:not([hidden]){
+    display: grid;
+}
+
+body.layout-story .about_card{
+    background: #f9fcff;
+    border: 1px solid rgba(31, 137, 235, 0.14);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 10px 24px rgba(16, 68, 130, 0.08);
+}
+
+body.layout-story .about_card h3{
+    margin: 0;
+    color: #0d5ba9;
+    font-size: 1.02rem;
+    line-height: 1.35;
+}
+
+body.layout-story .about_card p{
+    margin-top: .55rem;
+    color: var(--ui-text-muted);
+}
+
+body.layout-story .about_meta{
+    display: inline-block;
+    margin-top: .35rem;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .01em;
+    color: #256fb8;
+}
+
 body.layout-story .skills_name{
-    background: #eef7ff;
-    color: #0b66d0;
-    border: 1px solid rgba(11,102,208,.08);
+    background: #edf6ff;
+    color: var(--ui-primary-deep);
+    border: 1px solid rgba(31, 137, 235, 0.2);
+    border-radius: 999px;
+    padding: .42rem .8rem;
+    font-weight: 600;
 }
 
 body.layout-story .project_container{
-    max-width: 1580px;
-    gap: 18px;
-    padding: 1rem 1.25rem;
+    max-width: 1600px;
+    gap: 16px;
+    padding: 1rem;
 }
 
 body.layout-story .project_img .card-inner{
-    min-height: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(31, 137, 235, 0.14);
+    box-shadow: 0 16px 34px rgba(17, 53, 99, 0.08);
+}
+
+body.layout-story .project_img .card-inner:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 22px 42px rgba(17, 53, 99, 0.14);
+}
+
+body.layout-story .project_tech span,
+body.layout-story .project_tag{
+    background: #eaf5ff;
+    color: var(--ui-primary-deep);
+    border-color: rgba(31, 137, 235, 0.16);
+}
+
+body.layout-story .project_link-name,
+body.layout-story .project_more-link{
+    color: var(--ui-primary-deep) !important;
+}
+
+body.layout-story .project_more-link{
+    border-color: var(--ui-primary);
     background: #ffffff;
-    border: 1px solid rgba(33,150,243,.08);
 }
 
-body.layout-story .project_content h3,
-body.layout-story .about_subtitle,
-body.layout-story .skills_subtitle,
-body.layout-story .contact_subtitle{
-    color: #0b66d0;
+body.layout-story .project_more-link:hover{
+    color: #ffffff !important;
+    background: linear-gradient(120deg, var(--ui-primary) 0%, var(--ui-primary-deep) 100%);
 }
 
-body.layout-story .nav_link,
-body.layout-story .logo{
-    color: #FAFAFF;
+body.layout-story .contact_input{
+    border-color: rgba(24, 105, 196, 0.24);
+    background: #f8fbff;
+}
+
+body.layout-story .contact_button,
+body.layout-story .resume_button{
+    background: linear-gradient(120deg, var(--ui-primary) 0%, var(--ui-primary-deep) 100%);
 }
 
 body.layout-story .footer{
-    background: #0b66d0;
+    background: linear-gradient(120deg, #0f68bf 0%, #1f89eb 100%);
+}
+
+@media screen and (max-width: 768px){
+    body.layout-story .home_tagline{
+        font-size: .98rem;
+        padding: 0 .4rem;
+    }
+
+    body.layout-story .about_container,
+    body.layout-story .skills_container,
+    body.layout-story .project_container,
+    body.layout-story .contact_container{
+        padding: 1.2rem;
+        border-radius: 18px;
+    }
+
+    body.layout-story .section-title{
+        font-size: 1.55rem;
+    }
+
+    body.layout-story .about_panel{
+        grid-template-columns: 1fr;
+    }
+
+    body.layout-story .about_tab{
+        font-size: .84rem;
+    }
 }
