@@ -262,6 +262,18 @@ img{
     font-size: 1rem;
     cursor: pointer;
 }
+/* Spatial-like project card styles (subtle glass + depth) */
+.spatial-card{
+     background: rgba(255,255,255,0.04);
+     border-radius: 12px;
+     padding: 18px;
+     box-shadow: 0 10px 30px rgba(18,24,31,0.25), inset 0 1px 0 rgba(255,255,255,0.02);
+     backdrop-filter: blur(6px) saturate(120%);
+     border: 1px solid rgba(255,255,255,0.03);
+}
+.project_img .project_content h3{ color: #1690FF; }
+.project_tech span{ background: rgba(23,138,255,0.12); color: #0b74d1; padding: 6px 10px; border-radius: 999px; margin-right: 8px; display: inline-block; font-size: 0.85rem; }
+
 .resume_button {
     text-decoration: none;
     color: #fff;
@@ -462,7 +474,8 @@ img{
 }
 
 
-
+
+
 
 /* Center skills section on page */
 .skills_container {
