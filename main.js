@@ -128,38 +128,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     }
 
-    document.querySelectorAll('.project_link-name').forEach(link=>{
-        link.addEventListener('click', (event)=>{
-            const href = link.getAttribute('href')
-            if(!href || href === '#'){
-                return
-            }
-
-            event.preventDefault()
-            const card = link.closest('.project_img')
-            if(!card || !modal) return
-
-            const titleEl = card.querySelector('h3')
-            const descEl = card.querySelector('p')
-            const techEls = Array.from(card.querySelectorAll('.project_tech span'))
-
-            modalTitle.textContent = titleEl ? titleEl.textContent.trim() : ''
-            modalDesc.textContent = descEl ? descEl.textContent.trim() : ''
-            modalTech.innerHTML = ''
-
-            techEls.forEach(tag=>{
-                const pill = document.createElement('span')
-                pill.className = 'project_tag'
-                pill.textContent = tag.textContent.trim()
-                modalTech.appendChild(pill)
-            })
-
-            modalGithub.href = href
-            modal.classList.remove('hidden')
-            document.body.style.overflow = 'hidden'
-        })
-    })
-
     function closeModal(){
         if(modal){
             modal.classList.add('hidden')
@@ -182,7 +150,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
     })
 })
-
-
 
 
